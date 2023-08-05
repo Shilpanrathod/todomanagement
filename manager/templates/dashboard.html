@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to Your Dashboard</h1>
+    <h2>Summary:</h2>
+    <p>Total Tasks: {{ total_tasks }}</p>
+    <p>Completed Tasks: {{ completed_tasks }}</p>
+    <p>Overdue Tasks: {{ overdue_tasks }}</p>
+    <p>Tasks Due Within the Next Few Days: {{ tasks_due_soon }}</p>
+    <p>Task Completion Rate: {{ task_completion_rate }}%</p>
+
+    <!-- You can include other optional summary information here -->
+
+    <h2>Task List:</h2>
+    <ul>
+        {% for task in tasks %}
+        <li>
+           <1! <a href="{% url 'task_detail' task.id %}">{{ task.title }}</a>
+            {% if task.completion_status %}
+                (Completed)
+            {% else %}
+                (Pending)
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
